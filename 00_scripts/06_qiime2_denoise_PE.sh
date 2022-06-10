@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
 
-WORKING_DIRECTORY=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/05_QIIME2
-OUTPUT=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/05_QIIME2/visual
+WORKING_DIRECTORY=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/05_QIIME2/Original_reads_16S
+OUTPUT=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/05_QIIME2/visual/Original_reads_16S
 
-METADATA=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/98_database_files/sample-metadata.tsv
+# Make the directory (mkdir) only if not existe already(-p)
+mkdir -p $OUTPUT
+
+METADATA=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/98_database_files/sample-metadata_16S.tsv
 # negative control sample :
 #NEG_CONTROL=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/98_database_files/Negative_control_Sample_RepSeq_V4.qza
 NEG_CONTROL=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/99_contamination
@@ -35,15 +38,15 @@ echo $TMPDIR
 
 # https://github.com/benjjneb/dada2/issues/477
 
-#qiime dada2 denoise-paired --i-demultiplexed-seqs core/demux.qza \
-#--o-table core/Table.qza  \
-#--o-representative-sequences core/RepSeq.qza \
-#--o-denoising-stats core/Stats.qza \
-#--p-trim-left-f 0 \
-#--p-trim-left-r 0 \
-#--p-trunc-len-f 0 \
-#--p-trunc-len-r 0 \
-#--p-n-threads 4  
+qiime dada2 denoise-paired --i-demultiplexed-seqs core/demux.qza \
+--o-table core/Table.qza  \
+--o-representative-sequences core/RepSeq.qza \
+--o-denoising-stats core/Stats.qza \
+--p-trim-left-f 0 \
+--p-trim-left-r 0 \
+--p-trunc-len-f 0 \
+--p-trunc-len-r 0 \
+--p-n-threads 4  
 
 # sequence_contamination_filter :
 #################################
