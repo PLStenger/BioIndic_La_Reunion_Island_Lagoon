@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-WORKING_DIRECTORY=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/05_QIIME2
-OUTPUT=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/05_QIIME2/visual
+WORKING_DIRECTORY=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/05_QIIME2/Original_reads_16S
+OUTPUT=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/05_QIIME2/Original_reads_16S/visual
 
 DATABASE=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/98_database_files
 TMPDIR=/scratch_vol1
@@ -42,7 +42,7 @@ qiime diversity core-metrics-phylogenetic \
        --i-phylogeny tree/rooted-tree.qza \
        --i-table core/ConTable.qza \
        --p-sampling-depth 45405 \
-       --m-metadata-file $DATABASE/sample-metadata.tsv \
+       --m-metadata-file $DATABASE/sample-metadata_16S.tsv \
        --o-rarefied-table core/RarTable.qza \
        --o-observed-features-vector core/Vector-observed_asv.qza \
        --o-shannon-vector core/Vector-shannon.qza \
