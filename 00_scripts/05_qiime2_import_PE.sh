@@ -10,7 +10,7 @@ mkdir -p $OUTPUT
 # In the fastq manifest formats, a manifest file maps sample identifiers to fastq.gz or fastq absolute filepaths that contain sequence and quality data for the sample, and indicates the direction of the reads in each fastq.gz / fastq absolute filepath. The manifest file will generally be created by you, and it is designed to be a simple format that doesn’t put restrictions on the naming of the demultiplexed fastq.gz / fastq files, since there is no broadly used naming convention for these files. There are no restrictions on the name of the manifest file.
 # See https://docs.qiime2.org/2018.8/tutorials/importing/
 
-MANIFEST=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/98_database_files/manifest
+MANIFEST=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/98_database_files/manifest_16S
 TMPDIR=/scratch_vol1
 
 ###############################################################
