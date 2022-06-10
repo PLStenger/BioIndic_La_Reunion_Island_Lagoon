@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-WORKING_DIRECTORY=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/05_QIIME2
+WORKING_DIRECTORY=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/05_QIIME2/Original_reads_16S
 DATABASE=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/98_database_files
 TMPDIR=/scratch_vol1
 
