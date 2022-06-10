@@ -3,8 +3,11 @@
 # trimmomatic version 0.39
 # trimmomatic manual : http://www.usadellab.org/cms/uploads/supplementary/Trimmomatic/TrimmomaticManual_V0.32.pdf
 
-WORKING_/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/01_raw_data
-OUTPUT=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/03_cleaned_data
+WORKING_/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/01_raw_data/Original_reads_16S
+OUTPUT=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/03_cleaned_data/Original_reads_16S
+
+# Make the directory (mkdir) only if not existe already(-p)
+mkdir -p $OUTPUT
 
 ADAPTERFILE=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/99_softwares/adapters_sequences.fasta
 
