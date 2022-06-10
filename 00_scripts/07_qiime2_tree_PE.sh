@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 
-WORKING_DIRECTORY=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/05_QIIME2
-OUTPUT=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/05_QIIME2/visual
+WORKING_DIRECTORY=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/05_QIIME2/Original_reads_16S
+OUTPUT=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/05_QIIME2/Original_reads_16S/visual
 TMPDIR=/scratch_vol1
+
+# Make the directory (mkdir) only if not existe already(-p)
+mkdir -p $OUTPUT
 
 # Aim: construct a rooted phylogenetic tree
 
