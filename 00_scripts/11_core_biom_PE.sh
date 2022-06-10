@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-WORKING_DIRECTORY=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/05_QIIME2
-OUTPUT=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/05_QIIME2/visual
+WORKING_DIRECTORY=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/05_QIIME2/Original_reads_16S
+OUTPUT=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/05_QIIME2/Original_reads_16S/visual
 
 DATABASE=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/98_database_files
 TMPDIR=/scratch_vol1
@@ -27,7 +27,7 @@ echo $TMPDIR
 
 qiime feature-table filter-samples \
         --i-table core/RarTable.qza \
-        --m-metadata-file $DATABASE/sample-metadata.tsv \
+        --m-metadata-file $DATABASE/sample-metadata_16S.tsv \
         --p-where "[#SampleID] IN ('Hm105', 'Hm106', 'Hm107', 'Hm108', 'Hm109', 'Hm110', 'Hm112', 'Hm113', 'Hm114', 'Hm115', 'Hm11', 'Hm12', 'Hm13', 'Hm14', 'Hm15', 'Hm16', 'Hm18', 'Hm1', 'Hm20', 'Hm21', 'Hm22', 'Hm23', 'Hm26', 'Hm27', 'Hm28', 'Hm2', 'Hm30', 'Hm31', 'Hm32', 'Hm33', 'Hm34', 'Hm35', 'Hm36', 'Hm37', 'Hm39', 'Hm3', 'Hm40', 'Hm41', 'Hm43', 'Hm44', 'Hm45', 'Hm46', 'Hm47', 'Hm48', 'Hm49', 'Hm4', 'Hm50', 'Hm51', 'Hm52', 'Hm53', 'Hm54', 'Hm55', 'Hm56', 'Hm57', 'Hm5', 'Hm68', 'Hm69', 'Hm6', 'Hm70', 'Hm71', 'Hm72', 'Hm73', 'Hm74', 'Hm75', 'Hm85', 'Hm86', 'Hm87', 'Hm88', 'Hm89', 'Hm8', 'Hm90', 'Hm91', 'Hm92', 'Hm93', 'Hm94', 'Hm9', 'Hm', 'LC10', 'LC11', 'LC12', 'LC13', 'LC14', 'LC15', 'LC16', 'LC17', 'LC18', 'LC19', 'LC20', 'LC21', 'LC22', 'LC23', 'LC24', 'LC25', 'LC26', 'LC27', 'LC28', 'LC29', 'LC2', 'LC30', 'LC3', 'LC4', 'LC5', 'LC6', 'LC8', 'LC9', 'T1-B-BMa01', 'T1-B-BMa02', 'T1-B-BMa03', 'T1-B-BMa04', 'T1-B-BMa06', 'T1-B-BMa07', 'T1-B-BMa08', 'T1-B-BMa09', 'T1-B-BMa10', 'T1-CB-BMa01', 'T1-CB-BMa03', 'T1-CB-BMa04', 'T1-CB-BMa06', 'T1-CB-BMa07', 'T1-CB-BMa08', 'T1-CB-BMa09', 'T1-CHB-BMa01', 'T1-CHB-BMa02', 'T1-CHB-BMa03', 'T1-CHB-BMa04', 'T1-CHB-BMa06', 'T1-CHB-BMa07', 'T1-CHB-BMa08', 'T1-CHB-BMa09', 'T1-CHB-BMa10')"  \
         --o-filtered-table subtables/RarTable-all.qza
  
