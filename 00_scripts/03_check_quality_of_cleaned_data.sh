@@ -28,3 +28,52 @@ conda activate multiqc
 
 multiqc $OUTPUT
 
+
+WORKING_DIRECTORY=/scratch_vol1/fungi/Aquaculture_interspecies_assemblages/03_cleaned_data/Original_reads_18S
+OUTPUT=/scratch_vol1/fungi/Aquaculture_interspecies_assemblages/04_quality_check/Original_reads_18S
+
+# Make the directory (mkdir) only if not existe already(-p)
+mkdir -p $OUTPUT
+
+eval "$(conda shell.bash hook)"
+conda activate fastqc
+
+cd $WORKING_DIRECTORY
+
+for FILE in $(ls $WORKING_DIRECTORY/*.fastq.gz)
+do
+      fastqc $FILE -o $OUTPUT
+done ;
+
+conda deactivate fastqc
+conda activate multiqc
+
+# Run multiqc for quality summary
+
+multiqc $OUTPUT
+
+
+
+WORKING_DIRECTORY=/scratch_vol1/fungi/Aquaculture_interspecies_assemblages/03_cleaned_data/Original_reads_ITS
+OUTPUT=/scratch_vol1/fungi/Aquaculture_interspecies_assemblages/04_quality_check/Original_reads_ITS
+
+# Make the directory (mkdir) only if not existe already(-p)
+mkdir -p $OUTPUT
+
+eval "$(conda shell.bash hook)"
+conda activate fastqc
+
+cd $WORKING_DIRECTORY
+
+for FILE in $(ls $WORKING_DIRECTORY/*.fastq.gz)
+do
+      fastqc $FILE -o $OUTPUT
+done ;
+
+conda deactivate fastqc
+conda activate multiqc
+
+# Run multiqc for quality summary
+
+multiqc $OUTPUT
+
