@@ -3,7 +3,7 @@
 # trimmomatic version 0.39
 # trimmomatic manual : http://www.usadellab.org/cms/uploads/supplementary/Trimmomatic/TrimmomaticManual_V0.32.pdf
 
-WORKING=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/01_raw_data/Original_reads_16S
+WORKING_DIRECTORY=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/01_raw_data/Original_reads_16S
 OUTPUT=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/03_cleaned_data/Original_reads_16S
 
 # Make the directory (mkdir) only if not existe already(-p)
@@ -81,7 +81,7 @@ trimmomatic PE -Xmx60G -threads 8 -phred33 $WORKING_DIRECTORY/16S-CONTROL_S165_L
 trimmomatic PE -Xmx60G -threads 8 -phred33 $WORKING_DIRECTORY/16S-ZymoBIOMICS_S218_L001_R1_001.fastq $WORKING_DIRECTORY/16S-ZymoBIOMICS_S218_L001_R2_001.fastq $OUTPUT/16S-ZymoBIOMICS_S218_L001_R1.paired.fastq.gz $OUTPUT/16S-ZymoBIOMICS_S218_L001_R1.single.fastq.gz $OUTPUT/16S-ZymoBIOMICS_S218_L001_R2.paired.fastq.gz $OUTPUT/16S-ZymoBIOMICS_S218_L001_R2.single.fastq.gz ILLUMINACLIP:"$ADAPTERFILE":2:30:10 LEADING:30 TRAILING:30 SLIDINGWINDOW:26:30 MINLEN:150
 
 
-WORKING=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/01_raw_data/Original_reads_18S
+WORKING_DIRECTORY=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/01_raw_data/Original_reads_18S
 OUTPUT=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/03_cleaned_data/Original_reads_18S
 
 # Make the directory (mkdir) only if not existe already(-p)
@@ -160,7 +160,7 @@ trimmomatic PE -Xmx60G -threads 8 -phred33 $WORKING_DIRECTORY/18S-ZymoBIOMICS_S2
 
 
 
-WORKING=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/01_raw_data/Original_reads_ITS
+WORKING_DIRECTORY=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/01_raw_data/Original_reads_ITS
 OUTPUT=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/03_cleaned_data/Original_reads_ITS
 
 # Make the directory (mkdir) only if not existe already(-p)
