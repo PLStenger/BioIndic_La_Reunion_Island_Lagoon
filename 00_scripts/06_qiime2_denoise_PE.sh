@@ -6,7 +6,7 @@ OUTPUT=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/05_QIIME2/visual/Or
 # Make the directory (mkdir) only if not existe already(-p)
 mkdir -p $OUTPUT
 
-METADATA=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/98_database_files/sample-metadata_16S.tsv
+METADATA=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/98_database_files/sample-metadata.tsv
 # negative control sample :
 #NEG_CONTROL=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/98_database_files/Negative_control_Sample_RepSeq_V4.qza
 NEG_CONTROL=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/99_contamination
@@ -157,7 +157,7 @@ OUTPUT=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/05_QIIME2/visual/Or
 # Make the directory (mkdir) only if not existe already(-p)
 mkdir -p $OUTPUT
 
-METADATA=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/98_database_files/sample-metadata_18S.tsv
+METADATA=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/98_database_files/sample-metadata.tsv
 # negative control sample :
 #NEG_CONTROL=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/98_database_files/Negative_control_Sample_RepSeq_V4.qza
 NEG_CONTROL=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/99_contamination
@@ -309,7 +309,7 @@ OUTPUT=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/05_QIIME2/visual/Or
 # Make the directory (mkdir) only if not existe already(-p)
 mkdir -p $OUTPUT
 
-METADATA=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/98_database_files/sample-metadata_ITS.tsv
+METADATA=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/98_database_files/sample-metadata.tsv
 # negative control sample :
 #NEG_CONTROL=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/98_database_files/Negative_control_Sample_RepSeq_V4.qza
 NEG_CONTROL=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/99_contamination
