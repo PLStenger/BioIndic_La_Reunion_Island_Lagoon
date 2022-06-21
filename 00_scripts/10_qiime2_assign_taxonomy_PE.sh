@@ -110,10 +110,10 @@ cp $DATABASE/Silva-v138-full-length-seq-taxonomy.qza taxonomy/RefTaxo.qza
 #R2_Primers = c("GGACTACHVGGGTWTCTAAT","GGACTACNVGGGTWTCTAAT")
 
 # Here only for V4 --> forward: 'GTGCCAGCMGCCGCGGTAA'  # 515f & reverse: 'GGACTACHVGGGTWTCTAAT' # 806r
-qiime feature-classifier extract-reads --i-sequences taxonomy/DataSeq.qza \
-        --p-f-primer 'GTGCCAGCMGCCGCGGTAA' \
-        --p-r-primer 'TCCTCCGCTTATTGATATGC' \
-        --o-reads taxonomy/RefSeq.qza 
+#qiime feature-classifier extract-reads --i-sequences taxonomy/DataSeq.qza \
+#        --p-f-primer 'GTGCCAGCMGCCGCGGTAA' \
+#        --p-r-primer 'TCCTCCGCTTATTGATATGC' \
+#        --o-reads taxonomy/RefSeq.qza 
 
 # Here for V1V2V3V4 --> 27F 'AGAGTTTGATCCTGGCTCAG' & reverse: 'GGACTACHVGGGTWTCTAAT' # 806r
 #qiime feature-classifier extract-reads --i-sequences taxonomy/DataSeq.qza \
@@ -121,6 +121,16 @@ qiime feature-classifier extract-reads --i-sequences taxonomy/DataSeq.qza \
 #        --p-r-primer 'TCCTCCGCTTATTGATATGC' \
 #        --o-reads taxonomy/RefSeq.qza         
 
+
+# If necessary :
+# https://forum.qiime2.org/t/available-pre-trained-classifier-of-v3-v4-341f-805r-region-with-gg-99/3275
+# Available: Pre-trained classifier of V3-V4 (341F, 805R) region with gg_99
+
+# 16S : V3/V4 : V3V4 (amplified with primers 341F–805R)
+qiime feature-classifier extract-reads --i-sequences taxonomy/DataSeq.qza \
+        --p-f-primer 'CCTACGGGNGGCWGCAG' \
+        --p-r-primer 'GACTACHVGGGTATCTAATCC' \
+        --o-reads taxonomy/RefSeq.qza 
 
 # Aim: Create a scikit-learn naive_bayes classifier for reads
 
