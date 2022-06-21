@@ -37,11 +37,18 @@ echo $TMPDIR
 ############################
     # Aim: Applies a collection of diversity metrics to a feature table
     # Use: qiime diversity core-metrics-phylogenetic [OPTIONS]
+    
+    # With 137 -> 5 samples deleted :
+        #1-TOB-COR2,124.0
+        #2-LIV-COR2,121.0
+        #1-COP-SED1,105.0
+        #1-LIV-SED3,101.0
+        #1-TOB-SED2,86.0
 
 qiime diversity core-metrics-phylogenetic \
        --i-phylogeny tree/rooted-tree.qza \
        --i-table core/ConTable.qza \
-       --p-sampling-depth 45405 \
+       --p-sampling-depth 137 \
        --m-metadata-file $DATABASE/sample-metadata_16S.tsv \
        --o-rarefied-table core/RarTable.qza \
        --o-observed-features-vector core/Vector-observed_asv.qza \
