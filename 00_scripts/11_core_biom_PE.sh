@@ -188,11 +188,14 @@ echo $TMPDIR
 
 # Aim: Filter sample from table based on a feature table or metadata
 
-qiime feature-table filter-samples \
-        --i-table core/RarTable.qza \
-        --m-metadata-file $DATABASE/sample-metadata.tsv \'
-        --p-where "[#SampleID] IN ('1-COP-COR1', '1-COP-COR2', '1-COP-COR3', '1-COP-EAU1', '1-COP-EAU2', '1-COP-EAU3', '1-COP-SED1', '1-COP-SED2', '1-COP-SED3', '1-LIV-COR1', '1-LIV-COR2', '1-LIV-COR3', '1-LIV-EAU1', '1-LIV-EAU2', '1-LIV-EAU3', '1-LIV-SED1', '1-LIV-SED2', '1-LIV-SED3', '1-TOB-COR1', '1-TOB-COR2', '1-TOB-COR3', '1-TOB-EAU1', '1-TOB-EAU2', '1-TOB-EAU3', '1-TOB-SED1', '1-TOB-SED2', '1-TOB-SED3', '2-COP-COR1', '2-COP-COR2', '2-COP-COR3', '2-COP-EAU1', '2-COP-EAU2', '2-COP-EAU3', '2-COP-SED1', '2-COP-SED2', '2-COP-SED3', '2-LIV-COR1', '2-LIV-COR2', '2-LIV-COR3', '2-LIV-EAU1', '2-LIV-EAU2', '2-LIV-EAU3', '2-LIV-SED1', '2-LIV-SED2', '2-LIV-SED3', '2-TOB-COR1', '2-TOB-COR2', '2-TOB-COR3', '2-TOB-EAU1', '2-TOB-EAU2', '2-TOB-EAU3', '2-TOB-SED1', '2-TOB-SED2', '2-TOB-SED3', 'CONTROL')"  \
-        --o-filtered-table subtables/RarTable-all.qza
+#qiime feature-table filter-samples \
+#        --i-table core/RarTable.qza \
+#        --m-metadata-file $DATABASE/sample-metadata.tsv \'
+#        --p-where "[#SampleID] IN ('1-COP-COR1', '1-COP-COR2', '1-COP-COR3', '1-COP-EAU1', '1-COP-EAU2', '1-COP-EAU3', '1-COP-SED1', '1-COP-SED2', '1-COP-SED3', '1-LIV-COR1', '1-LIV-COR2', '1-LIV-COR3', '1-LIV-EAU1', '1-LIV-EAU2', '1-LIV-EAU3', '1-LIV-SED1', '1-LIV-SED2', '1-LIV-SED3', '1-TOB-COR1', '1-TOB-COR2', '1-TOB-COR3', '1-TOB-EAU1', '1-TOB-EAU2', '1-TOB-EAU3', '1-TOB-SED1', '1-TOB-SED2', '1-TOB-SED3', '2-COP-COR1', '2-COP-COR2', '2-COP-COR3', '2-COP-EAU1', '2-COP-EAU2', '2-COP-EAU3', '2-COP-SED1', '2-COP-SED2', '2-COP-SED3', '2-LIV-COR1', '2-LIV-COR2', '2-LIV-COR3', '2-LIV-EAU1', '2-LIV-EAU2', '2-LIV-EAU3', '2-LIV-SED1', '2-LIV-SED2', '2-LIV-SED3', '2-TOB-COR1', '2-TOB-COR2', '2-TOB-COR3', '2-TOB-EAU1', '2-TOB-EAU2', '2-TOB-EAU3', '2-TOB-SED1', '2-TOB-SED2', '2-TOB-SED3', 'CONTROL')"  \
+#        --o-filtered-table subtables/RarTable-all.qza
+        
+mv core/RarTable.qza subtables/RarTable-all.qza
+
  
 # Aim: Identify "core" features, which are features observed,
      # in a user-defined fraction of the samples
