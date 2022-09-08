@@ -134,5 +134,9 @@ For install QIIME2, please refer to http://qiime.org/install/install.html
         sys	    1m21.506s
     time nohup bash 11_core_biom_PE.sh &> 11_core_biom_PE.out
     
+    Run "12_FunGuild.sh" localy please
+    
+    time nohup bash 113_PICRUSt2.sh &> 113_PICRUSt2.out
+    
     
     time nohup bash 99_junk.sh &> 99_junk.out
