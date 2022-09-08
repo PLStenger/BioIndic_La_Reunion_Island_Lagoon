@@ -136,7 +136,7 @@ For install QIIME2, please refer to http://qiime.org/install/install.html
     
     Run "12_FunGuild.sh" localy please
     
-    time nohup bash 113_PICRUSt2.sh &> 113_PICRUSt2.out
+    time nohup bash 13_PICRUSt2.sh &> 13_PICRUSt2.out
     
     
     time nohup bash 99_junk.sh &> 99_junk.out
