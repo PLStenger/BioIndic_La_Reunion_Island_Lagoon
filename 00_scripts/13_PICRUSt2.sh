@@ -16,8 +16,8 @@ eval "$(conda shell.bash hook)"
 conda activate qiime2-2021.4
 
 # Make the directory (mkdir) only if not existe already(-p)
-mkdir -p subtables
-mkdir -p export/subtables
+mkdir -p q2-picrust2_output
+mkdir -p export/q2-picrust2_output
 
 # I'm doing this step in order to deal the no space left in cluster :
 export TMPDIR='/scratch_vol1/fungi'
