@@ -11,29 +11,8 @@
 WORKING_DIRECTORY=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/01_raw_data/Original_reads_18S
 OUTPUT=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/02_quality_check/Original_reads_18S
 
-# Make the directory (mkdir) only if not existe already(-p)
-mkdir -p $OUTPUT
-
-eval "$(conda shell.bash hook)"
-conda activate fastqc
-
-cd $WORKING_DIRECTORY
-
-for FILE in $(ls $WORKING_DIRECTORY/*.fastq)
-do
-      fastqc $FILE -o $OUTPUT
-done ;
-
-
-conda deactivate fastqc
-conda activate multiqc
-
-# Run multiqc for quality summary
-
-multiqc $OUTPUT
-
-WORKING_DIRECTORY=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/01_raw_data/Original_reads_ITS
-OUTPUT=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/02_quality_check/Original_reads_ITS
+WORKING_DIRECTORY=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/01_raw_data/Original_reads_TUFA
+OUTPUT=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/02_quality_check/Original_reads_TUFA
 
 # Make the directory (mkdir) only if not existe already(-p)
 mkdir -p $OUTPUT
@@ -55,3 +34,27 @@ conda activate multiqc
 # Run multiqc for quality summary
 
 multiqc $OUTPUT
+
+## WORKING_DIRECTORY=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/01_raw_data/Original_reads_ITS
+## OUTPUT=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/02_quality_check/Original_reads_ITS
+## 
+## # Make the directory (mkdir) only if not existe already(-p)
+## mkdir -p $OUTPUT
+## 
+## eval "$(conda shell.bash hook)"
+## conda activate fastqc
+## 
+## cd $WORKING_DIRECTORY
+## 
+## for FILE in $(ls $WORKING_DIRECTORY/*.fastq)
+## do
+##       fastqc $FILE -o $OUTPUT
+## done ;
+## 
+## 
+## conda deactivate fastqc
+## conda activate multiqc
+## 
+## # Run multiqc for quality summary
+## 
+## multiqc $OUTPUT
