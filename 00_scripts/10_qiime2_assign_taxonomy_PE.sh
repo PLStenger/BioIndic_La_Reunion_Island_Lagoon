@@ -712,7 +712,7 @@ qiime rescript get-ncbi-data \
 qiime feature-classifier classify-consensus-blast \
   --i-query core/RepSeq.qza \
   --i-reference-reads taxonomy/RefTaxo.qza \
-  --i-reference-taxonomy /taxonomy/DataSeq.qza \
+  --i-reference-taxonomy taxonomy/DataSeq.qza \
   --p-perc-identity 0.97 \
   --o-classification taxonomy/taxonomy_reads-per-batch_RepSeq.qza \
   --verbose
@@ -721,7 +721,7 @@ qiime feature-classifier classify-consensus-blast \
 qiime feature-classifier classify-consensus-blast \
   --i-query core/RarRepSeq.qza \
   --i-reference-reads taxonomy/RefTaxo.qza \
-  --i-reference-taxonomy /taxonomy/DataSeq.qza \
+  --i-reference-taxonomy taxonomy/DataSeq.qza \
   --p-perc-identity 0.97 \
   --o-classification taxonomy/taxonomy_reads-per-batch_RarRepSeq.qza \
   --verbose
