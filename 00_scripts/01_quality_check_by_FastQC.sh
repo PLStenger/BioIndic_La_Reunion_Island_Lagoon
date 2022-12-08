@@ -8,8 +8,8 @@
 # WORKING_DIRECTORY=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/01_raw_data/Original_reads_16S
 # OUTPUT=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/02_quality_check/Original_reads_16S
 
-WORKING_DIRECTORY=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/01_raw_data/Original_reads_18S
-OUTPUT=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/02_quality_check/Original_reads_18S
+# WORKING_DIRECTORY=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/01_raw_data/Original_reads_18S
+# OUTPUT=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/02_quality_check/Original_reads_18S
 
 WORKING_DIRECTORY=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/01_raw_data/Original_reads_TUFA
 OUTPUT=/scratch_vol1/fungi/BioIndic_La_Reunion_Island_Lagoon/02_quality_check/Original_reads_TUFA
