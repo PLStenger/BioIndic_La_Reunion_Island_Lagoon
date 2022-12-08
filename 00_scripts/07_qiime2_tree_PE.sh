@@ -183,8 +183,11 @@ export TMPDIR='/scratch_vol1/fungi'
 echo $TMPDIR
 
 #carry out a multiple seqeunce alignment using Mafft
+
+#   --i-sequences core/ConRepSeq.qza \
+
  qiime alignment mafft \
-  --i-sequences core/ConRepSeq.qza \
+  --i-sequences core/RepSeq.qza \
   --o-alignment tree/aligned-RepSeq.qza
 
 ##mask (or filter) the alignment to remove positions that are highly variable. These positions are generally considered to add noise to a resulting phylogenetic tree.
