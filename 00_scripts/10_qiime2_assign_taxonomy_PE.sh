@@ -703,6 +703,7 @@ echo $TMPDIR
 ##   --o-classification taxonomy/taxonomy_reads-per-batch_RarRepSeq.qza
 
 # https://forum.qiime2.org/t/using-rescript-to-compile-sequence-databases-and-taxonomy-classifiers-from-ncbi-genbank/15947
+# for query : https://www.ncbi.nlm.nih.gov/books/NBK49540/
 
 qiime rescript get-ncbi-data \
     --p-query '(tufA[ALL] OR TufA[ALL] OR TUFA[ALL] OR tufa[ALL]))' \
