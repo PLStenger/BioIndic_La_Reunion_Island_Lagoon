@@ -723,7 +723,6 @@ qiime feature-classifier classify-consensus-blast \
   --i-reference-reads taxonomy/RefTaxo.qza \
   --i-reference-taxonomy taxonomy/DataSeq.qza \
   --p-perc-identity 0.70 \
-  --p-threads FALSE \
   --o-classification taxonomy/taxonomy_reads-per-batch_RepSeq.qza \
   --verbose
 
@@ -737,7 +736,7 @@ qiime feature-classifier classify-consensus-vsearch \
     --p-maxaccepts 1 \
     --p-strand 'both' \
     --p-unassignable-label 'Unassigned' \
-    --p-threads FALSE \
+    --p-threads 12 \
     --o-classification taxonomy/taxonomy_reads-per-batch_RepSeq_vsearch.qza
 
 qiime feature-classifier classify-consensus-blast \
@@ -745,7 +744,6 @@ qiime feature-classifier classify-consensus-blast \
   --i-reference-reads taxonomy/RefTaxo.qza \
   --i-reference-taxonomy taxonomy/DataSeq.qza \
   --p-perc-identity 0.97 \
-  --p-threads FALSE \
   --o-classification taxonomy/taxonomy_reads-per-batch_RarRepSeq.qza \
   --verbose
 
