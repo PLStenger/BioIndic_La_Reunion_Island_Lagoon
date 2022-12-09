@@ -722,16 +722,30 @@ qiime feature-classifier classify-consensus-blast \
   --i-query core/RepSeq.qza \
   --i-reference-reads taxonomy/RefTaxo.qza \
   --i-reference-taxonomy taxonomy/DataSeq.qza \
-  --p-perc-identity 0.97 \
+  --p-perc-identity 0.70 \
+  --p-threads FALSE \
   --o-classification taxonomy/taxonomy_reads-per-batch_RepSeq.qza \
   --verbose
 
+qiime feature-classifier classify-consensus-vsearch \
+    --i-query core/RepSeq.qza  \
+    --i-reference-reads taxonomy/RefTaxo.qza \
+    --i-reference-taxonomy taxonomy/DataSeq.qza \
+    --p-perc-identity 0.70 \
+    --p-query-cov 0.3 \
+    --p-top-hits-only \
+    --p-maxaccepts 1 \
+    --p-strand 'both' \
+    --p-unassignable-label 'Unassigned' \
+    --p-threads FALSE \
+    --o-classification taxonomy/taxonomy_reads-per-batch_RepSeq_vsearch.qza
 
 qiime feature-classifier classify-consensus-blast \
   --i-query core/RarRepSeq.qza \
   --i-reference-reads taxonomy/RefTaxo.qza \
   --i-reference-taxonomy taxonomy/DataSeq.qza \
   --p-perc-identity 0.97 \
+  --p-threads FALSE \
   --o-classification taxonomy/taxonomy_reads-per-batch_RarRepSeq.qza \
   --verbose
 
@@ -749,15 +763,19 @@ qiime metadata tabulate \
 qiime metadata tabulate \
   --m-input-file taxonomy/taxonomy_reads-per-batch_RepSeq.qza \
   --o-visualization taxonomy/taxonomy_reads-per-batch_RepSeq.qzv  
+  
+  qiime metadata tabulate \
+  --m-input-file taxonomy/taxonomy_reads-per-batch_RepSeq_vsearch.qza \
+  --o-visualization taxonomy/taxonomy_reads-per-batch_RepSeq_vsearch.qzv  
 
 
 # Now create a visualization of the classified sequences.
   
-qiime taxa barplot \
-  --i-table core/Table.qza \
-  --i-taxonomy taxonomy/taxonomy_reads-per-batch_RepSeq.qza \
-  --m-metadata-file $DATABASE/sample-metadata.tsv \
-  --o-visualization taxonomy/taxa-bar-plots_reads-per-batch_RepSeq.qzv
+# qiime taxa barplot \
+#  --i-table core/Table.qza \
+#  --i-taxonomy taxonomy/taxonomy_reads-per-batch_RepSeq.qza \
+#  --m-metadata-file $DATABASE/sample-metadata.tsv \
+#  --o-visualization taxonomy/taxa-bar-plots_reads-per-batch_RepSeq.qzv
 
 ## qiime taxa barplot \
 ##   --i-table core/ConTable.qza \
@@ -765,11 +783,11 @@ qiime taxa barplot \
 ##   --m-metadata-file $DATABASE/sample-metadata.tsv \
 ##   --o-visualization taxonomy/taxa-bar-plots_reads-per-batch_ConRepSeq.qzv
 
-qiime taxa barplot \
-  --i-table core/RarTable.qza \
-  --i-taxonomy taxonomy/taxonomy_reads-per-batch_RarRepSeq.qza \
-  --m-metadata-file $DATABASE/sample-metadata.tsv \
-  --o-visualization taxonomy/taxa-bar-plots_reads-per-batch_RarRepSeq.qzv  
+# qiime taxa barplot \
+#  --i-table core/RarTable.qza \
+#  --i-taxonomy taxonomy/taxonomy_reads-per-batch_RarRepSeq.qza \
+#  --m-metadata-file $DATABASE/sample-metadata.tsv \
+#  --o-visualization taxonomy/taxa-bar-plots_reads-per-batch_RarRepSeq.qzv  
 
 qiime tools export --input-path taxonomy/Classifier.qza --output-path export/taxonomy/Classifier
 qiime tools export --input-path taxonomy/RefSeq.qza --output-path export/taxonomy/RefSeq
@@ -779,12 +797,15 @@ qiime tools export --input-path taxonomy/RefTaxo.qza --output-path export/taxono
 qiime tools export --input-path taxonomy/taxa-bar-plots_reads-per-batch_RarRepSeq.qzv --output-path export/taxonomy/taxa-bar-plots_reads-per-batch_RarRepSeq
 ## qiime tools export --input-path taxonomy/taxa-bar-plots_reads-per-batch_ConRepSeq.qzv --output-path export/taxonomy/taxa-bar-plots_reads-per-batch_ConRepSeq
 qiime tools export --input-path taxonomy/taxa-bar-plots_reads-per-batch_RepSeq.qzv --output-path export/taxonomy/taxa-bar-plots_reads-per-batch_RepSeq
+qiime tools export --input-path taxonomy/taxa-bar-plots_reads-per-batch_RepSeq_vsearch.qzv --output-path export/taxonomy/taxa-bar-plots_reads-per-batch_RepSeq_vsearch
 
 qiime tools export --input-path taxonomy/taxonomy_reads-per-batch_RepSeq.qzv --output-path export/taxonomy/taxonomy_reads-per-batch_RepSeq_visual
+qiime tools export --input-path taxonomy/taxonomy_reads-per-batch_RepSeq_vsearch.qzv --output-path export/taxonomy/taxonomy_reads-per-batch_RepSeq_visual_vsearch
 ## qiime tools export --input-path taxonomy/taxonomy_reads-per-batch_ConRepSeq.qzv --output-path export/taxonomy/taxonomy_reads-per-batch_ConRepSeq_visual
 qiime tools export --input-path taxonomy/taxonomy_reads-per-batch_RarRepSeq.qzv --output-path export/taxonomy/taxonomy_reads-per-batch_RarRepSeq_visual
 
 qiime tools export --input-path taxonomy/taxonomy_reads-per-batch_RepSeq.qza --output-path export/taxonomy/taxonomy_reads-per-batch_RepSeq
+qiime tools export --input-path taxonomy/taxonomy_reads-per-batch_RepSeq_vsearch.qza --output-path export/taxonomy/taxonomy_reads-per-batch_RepSeq_vsearch
 ## qiime tools export --input-path taxonomy/taxonomy_reads-per-batch_ConRepSeq.qza --output-path export/taxonomy/taxonomy_reads-per-batch_ConRepSeq
 qiime tools export --input-path taxonomy/taxonomy_reads-per-batch_RarRepSeq.qza --output-path export/taxonomy/taxonomy_reads-per-batch_RarRepSeq
 
