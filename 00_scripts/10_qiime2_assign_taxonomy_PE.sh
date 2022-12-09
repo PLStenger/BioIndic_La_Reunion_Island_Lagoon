@@ -622,8 +622,8 @@ eval "$(conda shell.bash hook)"
 conda activate qiime2-2021.4
 
 # I'm doing this step in order to deal the no space left in cluster :
-#export TMPDIR='/scratch_vol1/fungi'
-#echo $TMPDIR
+export TMPDIR='/scratch_vol1/fungi'
+echo $TMPDIR
 
 threads=FALSE
 
@@ -632,8 +632,8 @@ mkdir -p taxonomy
 mkdir -p export/taxonomy
 
 # I'm doing this step in order to deal the no space left in cluster :
-#export TMPDIR='/scratch_vol1/fungi'
-#echo $TMPDIR
+export TMPDIR='/scratch_vol1/fungi'
+echo $TMPDIR
 
 # TUFA: gTUFA7-TUFA4
 # The TUFA2 region of the 18S nuclear ribosomal RNA gene for the fungal community was amplified using the primers 18S-Fwd-TUFA7 5’- GTGARTCATCGAATCTTTG-3′ (Ihrmark et al., 2012) and 18S-Rev-TUFA4 5’-TCCTCCGCTTATTGATATGC-3′ (White et al., 1990). 
