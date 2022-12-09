@@ -622,16 +622,18 @@ eval "$(conda shell.bash hook)"
 conda activate qiime2-2021.4
 
 # I'm doing this step in order to deal the no space left in cluster :
-export TMPDIR='/scratch_vol1/fungi'
-echo $TMPDIR
+#export TMPDIR='/scratch_vol1/fungi'
+#echo $TMPDIR
+
+threads=FALSE
 
 # Make the directory (mkdir) only if not existe already(-p)
 mkdir -p taxonomy
 mkdir -p export/taxonomy
 
 # I'm doing this step in order to deal the no space left in cluster :
-export TMPDIR='/scratch_vol1/fungi'
-echo $TMPDIR
+#export TMPDIR='/scratch_vol1/fungi'
+#echo $TMPDIR
 
 # TUFA: gTUFA7-TUFA4
 # The TUFA2 region of the 18S nuclear ribosomal RNA gene for the fungal community was amplified using the primers 18S-Fwd-TUFA7 5’- GTGARTCATCGAATCTTTG-3′ (Ihrmark et al., 2012) and 18S-Rev-TUFA4 5’-TCCTCCGCTTATTGATATGC-3′ (White et al., 1990). 
@@ -705,10 +707,15 @@ echo $TMPDIR
 # https://forum.qiime2.org/t/using-rescript-to-compile-sequence-databases-and-taxonomy-classifiers-from-ncbi-genbank/15947
 # for query : https://www.ncbi.nlm.nih.gov/books/NBK49540/
 
-qiime rescript get-ncbi-data \
-    --p-query '(tufA[ALL] OR TufA[ALL] OR TUFA[ALL] OR tufa[ALL]))' \
-    --o-sequences taxonomy/RefTaxo.qza \
-    --o-taxonomy taxonomy/DataSeq.qza
+
+
+################################################################################################
+# Ceci fonctionne, mais pour eviter de rereunner, j'enleve ici poru test
+
+#qiime rescript get-ncbi-data \
+#    --p-query '(tufA[ALL] OR TufA[ALL] OR TUFA[ALL] OR tufa[ALL]))' \
+#    --o-sequences taxonomy/RefTaxo.qza \
+#    --o-taxonomy taxonomy/DataSeq.qza
 
 
 qiime feature-classifier classify-consensus-blast \
