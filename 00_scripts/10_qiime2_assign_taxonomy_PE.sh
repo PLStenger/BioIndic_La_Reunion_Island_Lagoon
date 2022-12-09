@@ -702,9 +702,10 @@ echo $TMPDIR
 ##   --i-reads core/RarRepSeq.qza \
 ##   --o-classification taxonomy/taxonomy_reads-per-batch_RarRepSeq.qza
 
+# https://forum.qiime2.org/t/using-rescript-to-compile-sequence-databases-and-taxonomy-classifiers-from-ncbi-genbank/15947
 
 qiime rescript get-ncbi-data \
-    --p-query '(tufA[Title] OR TufA[Title] OR TUFA[Title] OR tufa[Title]))' \
+    --p-query '(tufA[ALL] OR TufA[ALL] OR TUFA[ALL] OR tufa[ALL]))' \
     --o-sequences taxonomy/RefTaxo.qza \
     --o-taxonomy taxonomy/DataSeq.qza
 
