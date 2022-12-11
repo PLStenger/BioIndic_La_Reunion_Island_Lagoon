@@ -707,30 +707,30 @@ echo $TMPDIR
 # https://forum.qiime2.org/t/using-rescript-to-compile-sequence-databases-and-taxonomy-classifiers-from-ncbi-genbank/15947
 # for query : https://www.ncbi.nlm.nih.gov/books/NBK49540/
 
-
+# https://forum.qiime2.org/t/building-a-coi-database-from-ncbi-references/16500
 
 ################################################################################################
 # Ceci fonctionne, mais pour eviter de rereunner, j'enleve ici poru test
 
-#qiime rescript get-ncbi-data \
-#    --p-query '(tufA[ALL] OR TufA[ALL] OR TUFA[ALL] OR tufa[ALL]))' \
-#    --o-sequences taxonomy/RefTaxo.qza \
-#    --o-taxonomy taxonomy/DataSeq.qza
+qiime rescript get-ncbi-data \
+    --p-query '(tufA[ALL] OR TufA[ALL] OR TUFA[ALL] OR tufa[ALL] NOT bacteria[ORGN]))' \
+    --o-sequences taxonomy/RefTaxo.qza \
+    --o-taxonomy taxonomy/DataSeq.qza
 
 
-qiime feature-classifier classify-consensus-blast \
-  --i-query core/RepSeq.qza \
-  --i-reference-reads taxonomy/RefTaxo.qza \
-  --i-reference-taxonomy taxonomy/DataSeq.qza \
-  --p-perc-identity 0.70 \
-  --o-classification taxonomy/taxonomy_reads-per-batch_RepSeq.qza \
-  --verbose
+#qiime feature-classifier classify-consensus-blast \
+#  --i-query core/RepSeq.qza \
+#  --i-reference-reads taxonomy/RefTaxo.qza \
+#  --i-reference-taxonomy taxonomy/DataSeq.qza \
+#  --p-perc-identity 0.70 \
+#  --o-classification taxonomy/taxonomy_reads-per-batch_RepSeq.qza \
+#  --verbose
 
 qiime feature-classifier classify-consensus-vsearch \
     --i-query core/RepSeq.qza  \
     --i-reference-reads taxonomy/RefTaxo.qza \
     --i-reference-taxonomy taxonomy/DataSeq.qza \
-    --p-perc-identity 0.70 \
+    --p-perc-identity 0.95 \
     --p-query-cov 0.3 \
     --p-top-hits-only \
     --p-maxaccepts 1 \
@@ -738,34 +738,50 @@ qiime feature-classifier classify-consensus-vsearch \
     --p-unassignable-label 'Unassigned' \
     --p-threads 12 \
     --o-classification taxonomy/taxonomy_reads-per-batch_RepSeq_vsearch.qza
+    
+qiime feature-classifier classify-consensus-vsearch \
+    --i-query core/RarRepSeq.qza  \
+    --i-reference-reads taxonomy/RefTaxo.qza \
+    --i-reference-taxonomy taxonomy/DataSeq.qza \
+    --p-perc-identity 0.95 \
+    --p-query-cov 0.3 \
+    --p-top-hits-only \
+    --p-maxaccepts 1 \
+    --p-strand 'both' \
+    --p-unassignable-label 'Unassigned' \
+    --p-threads 12 \
+    --o-classification taxonomy/taxonomy_reads-per-batch_RarRepSeq_vsearch.qza
 
-qiime feature-classifier classify-consensus-blast \
-  --i-query core/RarRepSeq.qza \
-  --i-reference-reads taxonomy/RefTaxo.qza \
-  --i-reference-taxonomy taxonomy/DataSeq.qza \
-  --p-perc-identity 0.97 \
-  --o-classification taxonomy/taxonomy_reads-per-batch_RarRepSeq.qza \
-  --verbose
+#qiime feature-classifier classify-consensus-blast \
+#  --i-query core/RarRepSeq.qza \
+#  --i-reference-reads taxonomy/RefTaxo.qza \
+#  --i-reference-taxonomy taxonomy/DataSeq.qza \
+#  --p-perc-identity 0.97 \
+#  --o-classification taxonomy/taxonomy_reads-per-batch_RarRepSeq.qza \
+#  --verbose
 
 # Switch to https://chmi-sops.github.io/mydoc_qiime2.html#step-9-assign-taxonomy
 # --p-reads-per-batch 0 (default)
 
-qiime metadata tabulate \
-  --m-input-file taxonomy/taxonomy_reads-per-batch_RarRepSeq.qza \
-  --o-visualization taxonomy/taxonomy_reads-per-batch_RarRepSeq.qzv
+#qiime metadata tabulate \
+#  --m-input-file taxonomy/taxonomy_reads-per-batch_RarRepSeq.qza \
+#  --o-visualization taxonomy/taxonomy_reads-per-batch_RarRepSeq.qzv
 
 ## qiime metadata tabulate \
 ##   --m-input-file taxonomy/taxonomy_reads-per-batch_ConRepSeq.qza \
 ##   --o-visualization taxonomy/taxonomy_reads-per-batch_ConRepSeq.qzv
 
-qiime metadata tabulate \
-  --m-input-file taxonomy/taxonomy_reads-per-batch_RepSeq.qza \
-  --o-visualization taxonomy/taxonomy_reads-per-batch_RepSeq.qzv  
+#qiime metadata tabulate \
+#  --m-input-file taxonomy/taxonomy_reads-per-batch_RepSeq.qza \
+#  --o-visualization taxonomy/taxonomy_reads-per-batch_RepSeq.qzv  
   
   qiime metadata tabulate \
   --m-input-file taxonomy/taxonomy_reads-per-batch_RepSeq_vsearch.qza \
   --o-visualization taxonomy/taxonomy_reads-per-batch_RepSeq_vsearch.qzv  
 
+  qiime metadata tabulate \
+  --m-input-file taxonomy/taxonomy_reads-per-batch_RarRepSeq_vsearch.qza \
+  --o-visualization taxonomy/taxonomy_reads-per-batch_RarRepSeq_vsearch.qzv  
 
 # Now create a visualization of the classified sequences.
   
@@ -786,6 +802,12 @@ qiime metadata tabulate \
 #  --i-taxonomy taxonomy/taxonomy_reads-per-batch_RarRepSeq.qza \
 #  --m-metadata-file $DATABASE/sample-metadata.tsv \
 #  --o-visualization taxonomy/taxa-bar-plots_reads-per-batch_RarRepSeq.qzv  
+
+ qiime taxa barplot \
+  --i-table core/RarTable.qza \
+  --i-taxonomy taxonomy/taxonomy_reads-per-batch_RarRepSeq_vsearch.qza \
+  --m-metadata-file $DATABASE/sample-metadata.tsv \
+  --o-visualization taxonomy/taxa-bar-plots_reads-per-batch_RarRepSeq_vsearch.qzv  
 
 # qiime tools export --input-path taxonomy/Classifier.qza --output-path export/taxonomy/Classifier
 # qiime tools export --input-path taxonomy/RefSeq.qza --output-path export/taxonomy/RefSeq
