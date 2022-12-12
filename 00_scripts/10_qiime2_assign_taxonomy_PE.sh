@@ -712,10 +712,10 @@ echo $TMPDIR
 ################################################################################################
 # Ceci fonctionne, mais pour eviter de rereunner, j'enleve ici poru test
 
-qiime rescript get-ncbi-data \
-    --p-query '(tufA[ALL] OR TufA[ALL] OR TUFA[ALL] OR tufa[ALL] NOT bacteria[ORGN]))' \
-    --o-sequences taxonomy/RefTaxo.qza \
-    --o-taxonomy taxonomy/DataSeq.qza
+#qiime rescript get-ncbi-data \
+#    --p-query '(tufA[ALL] OR TufA[ALL] OR TUFA[ALL] OR tufa[ALL] NOT bacteria[ORGN]))' \
+#    --o-sequences taxonomy/RefTaxo.qza \
+#    --o-taxonomy taxonomy/DataSeq.qza
 
 
 #qiime feature-classifier classify-consensus-blast \
@@ -730,7 +730,7 @@ qiime feature-classifier classify-consensus-vsearch \
     --i-query core/RepSeq.qza  \
     --i-reference-reads taxonomy/RefTaxo.qza \
     --i-reference-taxonomy taxonomy/DataSeq.qza \
-    --p-perc-identity 0.95 \
+    --p-perc-identity 0.77 \
     --p-query-cov 0.3 \
     --p-top-hits-only \
     --p-maxaccepts 1 \
@@ -743,7 +743,7 @@ qiime feature-classifier classify-consensus-vsearch \
     --i-query core/RarRepSeq.qza  \
     --i-reference-reads taxonomy/RefTaxo.qza \
     --i-reference-taxonomy taxonomy/DataSeq.qza \
-    --p-perc-identity 0.95 \
+    --p-perc-identity 0.77 \
     --p-query-cov 0.3 \
     --p-top-hits-only \
     --p-maxaccepts 1 \
@@ -807,12 +807,19 @@ qiime feature-classifier classify-consensus-vsearch \
   --i-table core/RarTable.qza \
   --i-taxonomy taxonomy/taxonomy_reads-per-batch_RarRepSeq_vsearch.qza \
   --m-metadata-file $DATABASE/sample-metadata.tsv \
-  --o-visualization taxonomy/taxa-bar-plots_reads-per-batch_RarRepSeq_vsearch.qzv  
+  --o-visualization taxonomy/taxa-bar-plots_reads-per-batch_RarRepSeq_vsearch.qzv 
+  
+  
+   qiime taxa barplot \
+  --i-table core/RarTable.qza \
+  --i-taxonomy taxonomy/taxonomy_reads-per-batch_RepSeq_vsearch.qza \
+  --m-metadata-file $DATABASE/sample-metadata.tsv \
+  --o-visualization taxonomy/taxa-bar-plots_reads-per-batch_RepSeq_vsearch.qzv 
 
 # qiime tools export --input-path taxonomy/Classifier.qza --output-path export/taxonomy/Classifier
 # qiime tools export --input-path taxonomy/RefSeq.qza --output-path export/taxonomy/RefSeq
-qiime tools export --input-path taxonomy/DataSeq.qza --output-path export/taxonomy/DataSeq
-qiime tools export --input-path taxonomy/RefTaxo.qza --output-path export/taxonomy/RefTaxo
+#qiime tools export --input-path taxonomy/DataSeq.qza --output-path export/taxonomy/DataSeq
+#qiime tools export --input-path taxonomy/RefTaxo.qza --output-path export/taxonomy/RefTaxo
   
 qiime tools export --input-path taxonomy/taxa-bar-plots_reads-per-batch_RarRepSeq_vsearch.qzv --output-path export/taxonomy/taxa-bar-plots_reads-per-batch_RarRepSeq_vsearch
 ## qiime tools export --input-path taxonomy/taxa-bar-plots_reads-per-batch_ConRepSeq.qzv --output-path export/taxonomy/taxa-bar-plots_reads-per-batch_ConRepSeq
